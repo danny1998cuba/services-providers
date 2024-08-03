@@ -1,1 +1,7 @@
-<p>provider-details works!</p>
+<!-- <h2 mat-dialog-title></h2> -->
+<div class="absolute top-4 right-4">
+    <mat-icon (click)="closeModal()" class="text-blue-500">close</mat-icon>
+</div>
+<mat-dialog-content class="mat-typography">
+    {{provider | json}}
+</mat-dialog-content>

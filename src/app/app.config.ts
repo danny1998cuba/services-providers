@@ -6,6 +6,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { firebaseConfigDev } from './api/firebase';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -16,6 +20,8 @@ export const appConfig: ApplicationConfig = {
       preventDuplicates: true,
       resetTimeoutOnDuplicate: true,
       maxOpened: 1
-    })
+    }),
+    provideFirebaseApp(() => initializeApp(firebaseConfigDev)),
+    provideFirestore(() => getFirestore())
   ]
 };

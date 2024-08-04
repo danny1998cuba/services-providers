@@ -24,5 +24,7 @@ body {
     .mat-mdc-dialog-content {
         padding: 0 !important;
         margin: 0 !important;
+
+        max-height: 100%;
     }
 }

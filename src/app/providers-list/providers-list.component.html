@@ -4,13 +4,15 @@
 
         <mat-form-field appearance="outline" class="w-full md:w-[50%] xl:w-[33%] ">
             <mat-label [classList]="'text-blue-500'">Filtrar</mat-label>
-            <input matInput id="filter" name="filter" type="text" [formControl]="filter">
+            <input matInput id="filter" name="filter" type="search" [formControl]="filter">
             <mat-icon matSuffix class="text-blue-500">search</mat-icon>
         </mat-form-field>
     </div>
 
+    @if (!loadingProviders) {
+    @if (providersFiltered.length > 0) {
     <div class="grid gap-2 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2">
-        @for (item of providers; track $index) {
+        @for (item of providersFiltered; track $index) {
         <mat-card appearance="outlined" (click)="openProviderDetails(item)">
             <mat-card-header>
                 <mat-card-title>{{item.nombre}}</mat-card-title>
@@ -25,4 +27,14 @@
         </mat-card>
         }
     </div>
+    } @else {
+    <div class="flex min-h-[200px] items-center justify-center">
+        <p class="text-blue-500">Sin proveedores que mostrar</p>
+    </div>
+    }
+    } @else {
+    <div class="flex min-h-[200px] items-center justify-center">
+        <mat-spinner [diameter]="50"></mat-spinner>
+    </div>
+    }
 </div>

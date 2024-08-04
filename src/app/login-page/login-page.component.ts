@@ -46,23 +46,29 @@ export class LoginPageComponent {
     } else {
       this.errorMessage.next('');
     }
-    console.log(this.errorMessage.value)
     this._cdr.detectChanges()
   }
 
   submit() {
-    if (this.password.value !== this.authenticationService.getPassword()) {
+    if (!this.authenticationService.getPassword()) {
       this._snackBar.openFromComponent(ErrorSnackBar, {
         duration: this.durationInSeconds * 1000,
-        data: { message: 'La contraseña es incorrecta' },
+        data: { message: 'Error interno' },
         panelClass: 'error-snackbar'
       });
     } else {
-      this.authenticationService.login()
+      if (this.password.value !== this.authenticationService.getPassword()) {
+        this._snackBar.openFromComponent(ErrorSnackBar, {
+          duration: this.durationInSeconds * 1000,
+          data: { message: 'La contraseña es incorrecta' },
+          panelClass: 'error-snackbar'
+        });
+      } else {
+        this.authenticationService.login()
+      }
     }
   }
 }
-
 
 @Component({
   selector: 'app-error-snackbar',

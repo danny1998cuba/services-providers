@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { collectionData, Firestore } from '@angular/fire/firestore';
 import { collection } from '@firebase/firestore';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class AuthenticationService {
   ) {
     let users = collection(firestore, 'users');
     (collectionData<{ username: string, password: string }>(users) as Observable<{ username: string, password: string }[]>).subscribe(res => {
-      this.password = res.find(({ username }) => username === 'authorized_user')?.password
+      this.password = res.find(({ username }) => username === environment.userName)?.password
     })
   }
 

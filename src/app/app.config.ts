@@ -8,7 +8,7 @@ import { provideToastr } from 'ngx-toastr';
 
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { firebaseConfigDev } from './api/firebase';
+import { environment } from '../environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,7 +21,7 @@ export const appConfig: ApplicationConfig = {
       resetTimeoutOnDuplicate: true,
       maxOpened: 1
     }),
-    provideFirebaseApp(() => initializeApp(firebaseConfigDev)),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore())
   ]
 };

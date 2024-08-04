@@ -2,24 +2,6 @@
 
 import { Provider } from "./providers.model";
 
-export const firebaseConfigProd = {
-    apiKey: "AIzaSyCZ1Q8o9WatryAnB0d4JnHLhJa7Z6mk86I",
-    authDomain: "directorio-malaga-ciruelas.firebaseapp.com",
-    projectId: "directorio-malaga-ciruelas",
-    storageBucket: "directorio-malaga-ciruelas.appspot.com",
-    messagingSenderId: "278982809133",
-    appId: "1:278982809133:web:6b2f2ba0d434aae8264aa4"
-};
-
-export const firebaseConfigDev = {
-    apiKey: "AIzaSyCAuhNGYbgBxl3_fzMxGyoSHfC_mbZUkJA",
-    authDomain: "app-providers-test.firebaseapp.com",
-    projectId: "app-providers-test",
-    storageBucket: "app-providers-test.appspot.com",
-    messagingSenderId: "212483548399",
-    appId: "1:212483548399:web:439d8189a3fe9a294ba71a"
-}
-
 export const data: Provider[] = [
     {
         servicio: "Belleza",

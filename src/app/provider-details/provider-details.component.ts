@@ -29,4 +29,12 @@ export class ProviderDetailsComponent {
   closeModal() {
     this.dialogRef.close()
   }
+
+  getUrl(website: string): string {
+    if (!website.startsWith('http://') && !website.startsWith('https://')) {
+      return `https://${website}`
+    } else {
+      return website
+    }
+  }
 }

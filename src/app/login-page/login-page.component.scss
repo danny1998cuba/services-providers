@@ -6,4 +6,10 @@
     .mat-mdc-unelevated-button {
         border-radius: .25rem;
     }
+
+    .btn-submit {
+        &.mat-mdc-unelevated-button:not(:disabled) {
+            @apply bg-blue-500 text-white;
+        }
+    }
 }

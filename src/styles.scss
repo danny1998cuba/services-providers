@@ -28,3 +28,9 @@ body {
         max-height: 100%;
     }
 }
+
+.error-snackbar {
+    &.mat-mdc-snack-bar-container .mat-mdc-snackbar-surface {
+        @apply bg-red-400;
+    }
+}

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Provider, providersMock } from '../api/providers.model';
+import { Provider } from '../api/providers.model';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
@@ -29,7 +29,6 @@ export class ProvidersListComponent implements OnInit {
   filter: FormControl = new FormControl(undefined)
 
   providers: Provider[] = []
-  providersFiltered: Provider[] = []
 
   constructor(
     private matDialog: MatDialog
@@ -37,17 +36,11 @@ export class ProvidersListComponent implements OnInit {
     this.filter.valueChanges.subscribe(change => {
       // TODO: Make filtering with database consult
       console.log(change)
-      if (change) {
-
-      } else {
-        this.providersFiltered = this.providers
-      }
     })
   }
 
   ngOnInit(): void {
-    this.providers = providersMock  // TODO: Load from api
-    this.providersFiltered = this.providers
+    // TODO: Load providers from api
   }
 
   openProviderDetails(item: Provider) {
@@ -55,7 +48,9 @@ export class ProvidersListComponent implements OnInit {
       data: {
         provider: item
       },
-      panelClass: 'custom-modal'
+      panelClass: 'custom-modal',
+      width: '80%',
+      maxWidth: '600px'
     })
   }
 }

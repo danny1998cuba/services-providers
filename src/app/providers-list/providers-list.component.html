@@ -10,11 +10,11 @@
     </div>
 
     <div class="grid gap-2 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2">
-        @for (item of providersFiltered; track $index) {
+        @for (item of providers; track $index) {
         <mat-card appearance="outlined" (click)="openProviderDetails(item)">
             <mat-card-header>
-                <mat-card-title>{{item.servicio}}</mat-card-title>
-                <mat-card-subtitle>{{item.direccion}}</mat-card-subtitle>
+                <mat-card-title>{{item.nombre}}</mat-card-title>
+                <mat-card-subtitle>{{item.servicio}} - {{item.detalle_servicio}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content class="min-h-[50px]"></mat-card-content>
             <mat-card-actions align="end">

@@ -8,6 +8,7 @@
 html,
 body {
     height: 100%;
+    min-width: 340px;
 }
 
 body {
@@ -18,5 +19,10 @@ body {
 .custom-modal {
     .mat-mdc-dialog-surface {
         @apply rounded-lg;
+    }
+
+    .mat-mdc-dialog-content {
+        padding: 0 !important;
+        margin: 0 !important;
     }
 }

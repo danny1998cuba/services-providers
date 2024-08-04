@@ -5,12 +5,12 @@
             <input matInput id="password" name="password" type="password" [formControl]="password"
                 (blur)="updateErrorMessage()">
 
-            @if (password.invalid) {
-            <mat-error>{{errorMessage()}}</mat-error>
+            @if ((errorMessage | async) !== '') {
+            <span class="text-xs text-red-600 absolute bottom-[-20px] left-[-15px]">{{errorMessage | async}}</span>
             }
         </mat-form-field>
 
-        <button mat-flat-button [disabled]="password.invalid" [disableRipple]="false"
-            (click)="submit()" class="btn-submit">Continuar</button>
+        <button mat-flat-button [disabled]="password.invalid" [disableRipple]="false" (click)="submit()"
+            class="btn-submit">Continuar</button>
     </div>
 </div>

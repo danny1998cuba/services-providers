@@ -1,14 +1,15 @@
-import { ChangeDetectionStrategy, Component, HostListener, Inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, Inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input';
-import { merge } from 'rxjs';
+import { BehaviorSubject, merge } from 'rxjs';
 import { AuthenticationService } from '../api/authentication.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
 import { MAT_SNACK_BAR_DATA, MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login-page',
@@ -18,7 +19,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatButtonModule,
     MatRippleModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss',
@@ -28,23 +30,24 @@ export class LoginPageComponent {
   readonly password = new FormControl('', [Validators.required]);
   readonly durationInSeconds = 2;
 
-  errorMessage = signal('');
+  errorMessage = new BehaviorSubject('');
 
   constructor(
     private authenticationService: AuthenticationService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private _cdr: ChangeDetectorRef
   ) {
-    merge(this.password.statusChanges, this.password.valueChanges)
-      .pipe(takeUntilDestroyed())
-      .subscribe(() => this.updateErrorMessage());
+    this.password.valueChanges.subscribe(() => this.updateErrorMessage());
   }
 
   updateErrorMessage() {
-    if (this.password.hasError('required')) {
-      this.errorMessage.set('La contraseña es obligatoria');
+    if (this.password.hasError('required') || this.password.value === '') {
+      this.errorMessage.next('La contraseña es obligatoria');
     } else {
-      this.errorMessage.set('');
+      this.errorMessage.next('');
     }
+    console.log(this.errorMessage.value)
+    this._cdr.detectChanges()
   }
 
   submit() {

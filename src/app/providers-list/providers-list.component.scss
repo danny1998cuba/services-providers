@@ -5,7 +5,7 @@
 }
 
 mat-card {
-    @apply bg-blue-100 text-blue-500 outline-none border-hidden;
+    @apply bg-blue-100 text-blue-500 outline-none border-hidden shadow-lg;
 
     mat-card-title,
     mat-card-subtitle {

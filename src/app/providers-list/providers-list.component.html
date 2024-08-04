@@ -11,7 +11,7 @@
 
     @if (!loadingProviders) {
     @if (providersFiltered.length > 0) {
-    <div class="grid gap-4 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 overflow-auto"
+    <div class="grid gap-4 p-2 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 overflow-auto"
         style="max-height: calc(100% - 150px);">
         @for (item of providersFiltered; track $index) {
         <mat-card appearance="outlined" (click)="openProviderDetails(item)">

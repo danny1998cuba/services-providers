@@ -3,9 +3,11 @@
     <mat-icon (click)="closeModal()" class="text-blue-500">close</mat-icon>
 </div>
 <mat-dialog-content class="flex flex-col mat-typography">
-    <div class="flex justify-end flex-col min-h-[300px] bg-blue-200 p-4">
-        <p class="text-xl" style="margin-bottom: 0.25rem !important;">{{provider.nombre}}</p>
-        <span class="text-sm">{{provider.servicio}} - {{provider.detalle_servicio}}</span>
+    <div class="flex justify-end flex-col min-h-[300px]" [class.bg-blue-200]="!provider.foto" [ngStyle]="style">
+        <div class="container flex flex-col p-4 bg-blue-200/75 backdrop-blur-mio">
+            <p class="text-xl" style="margin-bottom: 0.25rem !important;">{{provider.nombre}}</p>
+            <span class="text-sm">{{provider.servicio}} - {{provider.detalle_servicio}}</span>
+        </div>
     </div>
     <div class="flex flex-col gap-2 p-4">
         <div class="details-block" *ngIf="provider.detalles">

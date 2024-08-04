@@ -9,6 +9,7 @@ import { provideToastr } from 'ngx-toastr';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,6 +23,7 @@ export const appConfig: ApplicationConfig = {
       maxOpened: 1
     }),
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage())
   ]
 };

@@ -1,8 +1,8 @@
-<div class="px-4">
-    <div class="w-full flex flex-col items-center py-4 text-blue-500">
+<div class="p-4 h-dvh overflow-hidden">
+    <div class="w-full flex flex-col items-center text-blue-500 max-h-[120px] h-[120px]">
         <p class="uppercase font-bold w-full text-center my-4">Proveedores de servicios</p>
 
-        <mat-form-field appearance="outline" class="w-full md:w-[50%] xl:w-[33%] ">
+        <mat-form-field appearance="outline" class="w-full md:w-[50%] xl:w-[33%]">
             <mat-label [classList]="'text-blue-500'">Filtrar</mat-label>
             <input matInput id="filter" name="filter" type="search" [formControl]="filter">
             <mat-icon matSuffix class="text-blue-500">search</mat-icon>
@@ -11,7 +11,8 @@
 
     @if (!loadingProviders) {
     @if (providersFiltered.length > 0) {
-    <div class="grid gap-2 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2">
+    <div class="grid gap-4 lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 overflow-auto"
+        style="max-height: calc(100% - 150px);">
         @for (item of providersFiltered; track $index) {
         <mat-card appearance="outlined" (click)="openProviderDetails(item)">
             <mat-card-header>

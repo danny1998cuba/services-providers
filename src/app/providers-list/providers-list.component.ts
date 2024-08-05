@@ -81,11 +81,6 @@ export class ProvidersListComponent implements OnInit {
           this._cdr.detectChanges()
         }
       })
-
-    // TODO: Remove after import data in production
-    // data.forEach(p => {
-    //   this.firebaseService.addProvider(p)
-    // })
   }
 
   openProviderDetails(item: Provider) {

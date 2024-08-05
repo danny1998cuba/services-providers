@@ -1,12 +1,13 @@
 export const environment = {
     production: true,
     firebaseConfig: {
-        apiKey: "AIzaSyCZ1Q8o9WatryAnB0d4JnHLhJa7Z6mk86I",
-        authDomain: "directorio-malaga-ciruelas.firebaseapp.com",
-        projectId: "directorio-malaga-ciruelas",
-        storageBucket: "directorio-malaga-ciruelas.appspot.com",
-        messagingSenderId: "278982809133",
-        appId: "1:278982809133:web:6b2f2ba0d434aae8264aa4"
+        apiKey: "AIzaSyAIyR_dariYpIaZD8z88I-88CUi5IcQdEI",
+        authDomain: "directorio-malaga-b6c73.firebaseapp.com",
+        projectId: "directorio-malaga-b6c73",
+        storageBucket: "directorio-malaga-b6c73.appspot.com",
+        messagingSenderId: "710023200923",
+        appId: "1:710023200923:web:ad4431963d9e25035d463e",
+        measurementId: "G-BCDZX8EX98"
     },
     userName: 'authorized_user'
 };
